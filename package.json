@@ -1,0 +1,24 @@
+{
+  "name": "proyecto_web_asincrono",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cvidal84/Proyecto_Web_Asincrono.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Cvidal84/Proyecto_Web_Asincrono/issues"
+  },
+  "homepage": "https://github.com/Cvidal84/Proyecto_Web_Asincrono#readme",
+  "devDependencies": {
+    "vite": "^6.2.2"
+  }
+}
