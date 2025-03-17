@@ -1,4 +1,6 @@
 import './style.css'
+import { Footer } from "../components/Footer/Footer.js";
+
 const ACCESS_KEY = "k0RNLWWsadV8Mhm7Rz7CGr7vrrZ_azBBlkrjrRp_cIc"
 const SECRET_KEY = "DzfZDHmiagN_DEMeostQ08-9GoEsokmbtZRpsE4PF5s"
 
@@ -56,4 +58,13 @@ document.querySelector("#searchInput").addEventListener("keypress", (event) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   getPhotos()
+
+  const footerContainer = document.createElement("footer");
+  footerContainer.innerHTML = Footer();
+  
+  // Insertar el footer al final del body
+  document.body.appendChild(footerContainer);
+
+
+
 })
