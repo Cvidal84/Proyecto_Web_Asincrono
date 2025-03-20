@@ -4,7 +4,7 @@ import { Button } from "../Button/Button.js";
 export const Footer = () => `
 
 <h2>Contact</h2>
-<div>
+<div class="myButton">
 ${Button("/icons/twitter.png", "Twitter")}
 ${Button("/icons/github.png", "GitHub")}
 ${Button("/icons/linkedin.png", "LinkedIn")}

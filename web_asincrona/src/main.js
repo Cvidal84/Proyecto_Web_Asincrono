@@ -1,12 +1,13 @@
 import './style.css'
 import { Footer } from "../components/Footer/Footer.js";
+import { Divider } from "../components/Divider/Divider.js";
 
 const ACCESS_KEY = "k0RNLWWsadV8Mhm7Rz7CGr7vrrZ_azBBlkrjrRp_cIc"
 const SECRET_KEY = "DzfZDHmiagN_DEMeostQ08-9GoEsokmbtZRpsE4PF5s"
 
 //funcion para obtener fotos segun la busqueda
 const getPhotos = async (query) => {
-  const res = await fetch (`https://api.unsplash.com/search/photos?page=1&per_page=20&query=${query}&client_id=${ACCESS_KEY}`)
+  const res = await fetch (`https://api.unsplash.com/search/photos?page=1&per_page=30&query=${query}&client_id=${ACCESS_KEY}`)
   const data = await res.json()
   mapPhotos(data.results)
 
@@ -38,6 +39,20 @@ const printPhotos = (photos) => {
   }
 }
 
+// Agregar el Divider después del header
+const header = document.querySelector("header");
+if (header) {
+    const tempContainer = document.createElement("div");
+    tempContainer.innerHTML = Divider();
+    header.insertAdjacentElement("afterend", tempContainer.firstElementChild);
+}
+
+//Agregar el componente footer en la etiqueta footer
+const footerElement = document.querySelector("footer");
+  if (footerElement) {
+    footerElement.innerHTML = Footer();
+  }
+
 //para buscar imagenes con el boton de buscar
 document.querySelector("#searchButton").addEventListener("click", () => {
   const searchTerm = document.querySelector("#searchInput").value.trim()
@@ -57,14 +72,7 @@ document.querySelector("#searchInput").addEventListener("keypress", (event) => {
 })
 
 window.addEventListener("DOMContentLoaded", () => {
-  getPhotos()
-
-  const footerContainer = document.createElement("footer");
-  footerContainer.innerHTML = Footer();
-  
-  // Insertar el footer al final del body
-  document.body.appendChild(footerContainer);
+  getPhotos();
 
 
-
-})
+});
