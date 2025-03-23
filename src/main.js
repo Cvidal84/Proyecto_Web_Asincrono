@@ -2,12 +2,18 @@ import './style.css'
 import { Footer } from "../components/Footer/Footer.js";
 import { Divider } from "../components/Divider/Divider.js";
 
+
 const ACCESS_KEY = "k0RNLWWsadV8Mhm7Rz7CGr7vrrZ_azBBlkrjrRp_cIc"
 const SECRET_KEY = "DzfZDHmiagN_DEMeostQ08-9GoEsokmbtZRpsE4PF5s"
 
+let currentPage = 1
+let currentQuery = "coches"
+
 //funcion para obtener fotos segun la busqueda
-const getPhotos = async (query) => {
-  const res = await fetch (`https://api.unsplash.com/search/photos?page=1&per_page=30&query=${query}&client_id=${ACCESS_KEY}`)
+const getPhotos = async (query, page = 1) => {
+  currentQuery = query
+  currentPage = page
+  const res = await fetch (`https://api.unsplash.com/search/photos?page=${page}&per_page=30&query=${query}&client_id=${ACCESS_KEY}`)
   const data = await res.json()
   mapPhotos(data.results)
   updateFooter() //cambia las palabras tras cada busqueda
@@ -68,7 +74,9 @@ if (header) {
 document.querySelector("#searchButton").addEventListener("click", () => {
   const searchTerm = document.querySelector("#searchInput").value.trim()
   if (searchTerm) {
-    getPhotos(searchTerm)
+    currentPage = 1
+    getPhotos(searchTerm, currentPage)
+    updatePageNumber()
   }
 })
 
@@ -77,7 +85,9 @@ document.querySelector("#searchInput").addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     const searchTerm = event.target.value.trim()
     if (searchTerm) {
-      getPhotos(searchTerm)
+      currentPage = 1
+      getPhotos(searchTerm, currentPage)
+      updatePageNumber()
     }
   }
 })
@@ -113,9 +123,31 @@ document.addEventListener("click", (event) => {
   const button = event.target.closest(".my-btn");
   if (button && button.dataset.query) {
     const query = button.dataset.query;
-    getPhotos(query);
+    currentPage = 1
+    getPhotos(query, currentPage)
+    updatePageNumber()
   }
 });
+
+//pasar paginas
+document.querySelector("#nextPage").addEventListener("click", () => {
+  currentPage++;
+  getPhotos(currentQuery, currentPage);
+  updatePageNumber();
+});
+
+document.querySelector("#prevPage").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    getPhotos(currentQuery, currentPage);
+    updatePageNumber();
+  }
+});
+
+const updatePageNumber = () => {
+  document.querySelector("#pageNumber").textContent = `Página ${currentPage}`;
+};
+
 
 
 window.addEventListener("DOMContentLoaded", () => {

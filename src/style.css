@@ -87,6 +87,14 @@ body.light {
   border-radius: 5px;
   border: solid white 2px;
 }
+#paginacion {
+  padding: 30px;
+  text-align: center;
+}
+#paginacion > button{
+  margin: 10px;
+  width: 100px;
+}
 footer {
   height: auto;
   display:flex;
@@ -111,6 +119,15 @@ footer > h2 {
   }
   .buscador{
     text-align: center;
+  }
+  #paginacion {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #paginacion > button{
+    margin: 10px;
+    width: 90px;
   }
 
 }
