@@ -29,7 +29,6 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  
 }
 div > input {
   border-radius: 5px;

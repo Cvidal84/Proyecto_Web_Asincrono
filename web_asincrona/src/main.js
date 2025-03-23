@@ -70,6 +70,14 @@ document.querySelector("#searchInput").addEventListener("keypress", (event) => {
     }
   }
 })
+//Para buscar con los botones del footer
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".my-btn");
+  if (button && button.dataset.query) {
+    const query = button.dataset.query;
+    getPhotos(query);
+  }
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   getPhotos();
