@@ -13,8 +13,20 @@
   box-sizing: border-box;
 }
 header {
+  display: flex;
+  justify-content: space-between;
   padding: 20px;
   font-size: 3rem;
+}
+header > button {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  color: var(--primary-dark);
+  transition: color 0.3s;
+}
+body.light header > button {
+  color: var(--primary-light); 
 }
 
 body {
@@ -37,6 +49,7 @@ div > input {
   font-size: 1.2em;
   text-align: center;
   margin: 20px;
+  border-color: black;
 }
 div > button {
   height: 35px;
@@ -44,6 +57,8 @@ div > button {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.2em;
   border-radius: 5px;
+  background-color: white;
+  border-color: black;
   
 }
 .buscador {
@@ -52,7 +67,7 @@ div > button {
   border-radius: 5px;
   text-align: center;
 }
-.light {
+body.light {
   background-color: var(--bg-light);
   color: var(--primary-light);
 }

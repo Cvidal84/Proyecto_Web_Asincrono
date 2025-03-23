@@ -7,6 +7,10 @@ footer {
     gap: 4rem;
     flex-wrap: wrap;
     margin: 2rem 0;
+    font-size: 1.1rem;
+  }
+  footer > h2 {
+    font-size: 2.5rem;
   }
   .myButton {
     display: flex;
